@@ -18,7 +18,7 @@ def checkguess(phrase, guess, g):
 
 def prompt(phrase, guess, attempts):
     print('current answer: ' + guess)
-    left = 7 - len(attempts)
+    left = 6 - len(attempts)
     paren = ''
     if (len(attempts) != 0):
         paren = ' (' + ','.join(attempts) + ')'
@@ -36,7 +36,7 @@ def __main():
     print('Welcome to Hangman.')
     attempts = set()
 
-    while (phrase != guess and len(attempts) < 7):
+    while (phrase != guess and len(attempts) < 6):
         guess = prompt(phrase, guess, attempts)
 
     if (phrase == guess):
