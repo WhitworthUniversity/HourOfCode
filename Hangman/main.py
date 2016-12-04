@@ -31,7 +31,13 @@ def prompt(phrase, guess, attempts):
 
 def __main():
     phrase = getphrase()
-    guess = ''.join(map(lambda c: '?' if c.isalpha() else c, phrase))
+    #guess = ''.join(map(lambda c: '?' if c.isalpha() else c, phrase))
+    guess = ''
+    for c in phrase:
+        if (c.isalpha()):
+            guess = guess + '?'
+        else:
+            guess = guess + c
 
     print('Welcome to Hangman.')
     attempts = set()
