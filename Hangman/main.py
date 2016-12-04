@@ -19,7 +19,10 @@ def checkguess(phrase, guess, g):
 def prompt(phrase, guess, attempts):
     print('current answer: ' + guess)
     left = 7 - len(attempts)
-    g = input(str(left) + ' attempts left. what is your guess? ')
+    paren = ''
+    if (len(attempts) != 0):
+        paren = ' (' + ','.join(attempts) + ')'
+    g = input(str(left) + ' attempts left' + paren + '. what is your guess? ')
     if (g not in attempts and guess.find(g) == -1):
         guess = checkguess(phrase, guess, g)
         if (guess.find(g) == -1):
@@ -28,7 +31,7 @@ def prompt(phrase, guess, attempts):
 
 def __main():
     phrase = getphrase()
-    guess = ''.join(map(lambda c: '_' if c.isalpha() else c, phrase))
+    guess = ''.join(map(lambda c: '?' if c.isalpha() else c, phrase))
 
     print('Welcome to Hangman.')
     attempts = set()
@@ -37,7 +40,7 @@ def __main():
         guess = prompt(phrase, guess, attempts)
 
     if (phrase == guess):
-        print('you won!')
+        print('you won: "' + phrase + '"!')
     else:
         print('sorry, you were hung')
 
